@@ -4,7 +4,7 @@
   <p><strong>Silent PC activity and uptime monitoring with visual telemetry heatmaps.</strong></p>
 
   <p>
-    <a href="https://sysbeacon.vercel.app/SysBeacon.exe" download="SysBeacon.exe"><strong>Download Executable</strong></a> ·
+    <a href="https://sysbeacon.vercel.app/SysBeacon.zip" download="SysBeacon.zip"><strong>Download Setup Archive</strong></a> ·
     <a href="#-local-endpoints"><strong>Local Endpoints</strong></a> ·
     <a href="#-features"><strong>Features</strong></a>
   </p>
@@ -26,13 +26,12 @@
 
 ## 📥 Download & Quick Start
 
-No complex setup or scripting required. Simply grab the pre-compiled binary and run it:
-
-1. **Download the Executable:**
-   - Get the latest `SysBeacon.exe` from the releases or the project root directory.
-2. **Run the Application:**
-   - Double-click `SysBeacon.exe` to start the local monitoring service and dashboard.
-   - _(Optional)_ Right-click and select **"Run as administrator"** if you are setting it up to track background services reliably.
+1. **Download the Archive:**
+   - Get the latest `SysBeacon.zip` package from the releases or the project root directory.
+2. **Extract & Install:**
+   - Extract the contents of the ZIP file to your preferred target folder.
+   - Double-click (or right-click and select **"Run as administrator"**) `install.bat` to complete the setup.
+   - _Note:_ Ensure that `SysBeacon.exe` remains in the same folder path as the installer script for proper configuration.
 
 ---
 
