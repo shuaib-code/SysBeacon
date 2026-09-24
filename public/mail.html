@@ -1,0 +1,1755 @@
+<!doctype html>
+<html
+	xmlns:v="urn:schemas-microsoft-com:vml"
+	xmlns:o="urn:schemas-microsoft-com:office:office"
+	lang="en"
+>
+	<head>
+		<title>SysBeacon — PC Activity Monitor</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700%7CRoboto:400,500,600,700;display=swap"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			a[x-apple-data-detectors] {
+				color: inherit !important;
+				text-decoration: inherit !important;
+			}
+
+			#MessageViewBody a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			p {
+				line-height: inherit;
+			}
+
+			.desktop_hide,
+			.desktop_hide table {
+				mso-hide: all;
+				display: none;
+				max-height: 0;
+				overflow: hidden;
+			}
+
+			sub,
+			sup {
+				font-size: 75%;
+				line-height: 0;
+			}
+
+			@media (max-width: 630px) {
+				.mobile_hide {
+					display: none;
+				}
+
+				.row-content {
+					width: 100% !important;
+				}
+
+				.stack .column {
+					width: 100%;
+					display: block;
+				}
+
+				.desktop_hide,
+				.desktop_hide table {
+					display: table !important;
+					max-height: none !important;
+				}
+
+				.row-content-pad {
+					padding-left: 18px !important;
+					padding-right: 18px !important;
+				}
+			}
+		</style>
+	</head>
+
+	<body
+		dir="ltr"
+		class="body"
+		style="
+			background-color: #ffffff;
+			margin: 0;
+			padding: 0;
+			-webkit-text-size-adjust: none;
+			text-size-adjust: none;
+		"
+	>
+		<table
+			class="nl-container"
+			width="100%"
+			border="0"
+			cellpadding="0"
+			cellspacing="0"
+			role="presentation"
+			style="
+				mso-table-lspace: 0;
+				mso-table-rspace: 0;
+				background-color: #ffffff;
+			"
+		>
+			<tbody>
+				<tr>
+					<td>
+						<!-- Header Logo Row -->
+						<table
+							class="row row-1"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												border-top: 1px solid #e8eaed;
+												border-radius: 8px 8px 0 0;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1 row-content-pad"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-left: 40px;
+															padding-right: 40px;
+															padding-top: 28px;
+															vertical-align: top;
+														"
+													>
+														<div
+															style="
+																font-family:
+																	&quot;Google Sans&quot;, Roboto, arial,
+																	sans-serif;
+																text-align: center;
+															"
+															align="center"
+														>
+															<img
+																src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
+																height="40"
+																alt="SysBeacon Logo"
+															/>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Main Title Row -->
+						<table
+							class="row row-2"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1 row-content-pad"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-bottom: 8px;
+															padding-left: 40px;
+															padding-right: 40px;
+															padding-top: 20px;
+															vertical-align: top;
+														"
+													>
+														<div
+															style="
+																color: #202124;
+																font-family:
+																	&quot;Google Sans&quot;, Roboto, arial,
+																	sans-serif;
+																font-size: 22px;
+																font-weight: 400;
+																line-height: 1.2;
+																text-align: center;
+															"
+														>
+															<p style="margin: 0">
+																SysBeacon — PC Activity Monitor
+															</p>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Subtitle / Status Badge -->
+						<table
+							class="row row-3"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1 row-content-pad"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-bottom: 3px;
+															padding-left: 40px;
+															padding-right: 40px;
+															padding-top: 4px;
+															vertical-align: top;
+														"
+													>
+														<div
+															style="
+																font-family:
+																	&quot;Google Sans&quot;, Roboto, arial,
+																	sans-serif;
+																text-align: center;
+															"
+															align="center"
+														>
+															<span
+																style="
+																	font-size: 14px;
+																	color: #1a73e8;
+																	font-weight: 500;
+																"
+																>Local Telemetry Dashboard</span
+															>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Divider -->
+						<table
+							class="row row-4"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1 row-content-pad"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-left: 40px;
+															padding-right: 40px;
+															padding-top: 20px;
+															vertical-align: top;
+														"
+													>
+														<table
+															border="0"
+															cellpadding="0"
+															cellspacing="0"
+															role="presentation"
+															width="100%"
+														>
+															<tr>
+																<td
+																	style="
+																		font-size: 1px;
+																		line-height: 1px;
+																		border-top: 1px solid #dadce0;
+																	"
+																>
+																	<span>&#8202;</span>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Info Banner Callout -->
+						<table
+							class="row row-7"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															vertical-align: top;
+														"
+													>
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 16px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="
+																			background-color: #e8f0fe;
+																			border-radius: 12px;
+																			border: 1px solid #d2e3fc;
+																		"
+																	>
+																		<tr>
+																			<td style="padding: 16px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								vertical-align: top;
+																								padding-right: 12px;
+																								width: 24px;
+																							"
+																						>
+																							<svg
+																								width="24"
+																								height="24"
+																								viewBox="0 0 24 24"
+																								fill="none"
+																								xmlns="http://www.w3.org/2000/svg"
+																							>
+																								<path
+																									d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+																									fill="#1A73E8"
+																								/>
+																							</svg>
+																						</td>
+																						<td
+																							style="
+																								vertical-align: top;
+																								color: #174ea6;
+																								font-size: 14px;
+																								font-weight: 400;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							<p
+																								style="
+																									line-height: 20px;
+																									margin: 0 0 8px 0;
+																									font-weight: 700;
+																									color: #1a73e8;
+																								"
+																							>
+																								Silent uptime tracking with
+																								visual activity heatmaps.
+																							</p>
+																							<p
+																								style="
+																									line-height: 20px;
+																									margin: 0;
+																									color: #3c4043;
+																								"
+																							>
+																								SysBeacon records online pings
+																								every minute directly to a local
+																								SQLite database, giving you
+																								visual analytics and raw record
+																								access without external cloud
+																								services.
+																							</p>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Download Executable Section Card -->
+						<table
+							class="row row-9"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+							id="install"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															vertical-align: top;
+														"
+													>
+														<!-- Card Header -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 12px 40px 0px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="
+																			background-color: #f8f9fa;
+																			border-radius: 28px 28px 0px 0px;
+																		"
+																	>
+																		<tr>
+																			<td style="padding: 16px 32px 8px 32px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								vertical-align: top;
+																								color: #202124;
+																								font-size: 16px;
+																								font-weight: 600;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							Direct Executable (WINDOWS x64)
+																						</td>
+																					</tr>
+																					<tr>
+																						<td
+																							style="
+																								color: #5f6368;
+																								font-size: 13px;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																								padding-top: 4px;
+																							"
+																						>
+																							Download the compiled application
+																							binary for Windows.
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+
+														<!-- Download Action Row -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="background-color: #f8f9fa"
+																	>
+																		<tr>
+																			<td style="padding: 8px 26px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								width: 32px;
+																								vertical-align: top;
+																								padding: 8px 6px;
+																							"
+																						>
+																							<svg
+																								width="24"
+																								height="24"
+																								viewBox="0 0 24 24"
+																								fill="none"
+																								xmlns="http://www.w3.org/2000/svg"
+																							>
+																								<path
+																									d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z"
+																									fill="#1A73E8"
+																								/>
+																							</svg>
+																						</td>
+																						<td
+																							style="
+																								vertical-align: top;
+																								padding: 6px;
+																								font-weight: 400;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							<div
+																								style="
+																									color: #202124;
+																									font-size: 14px;
+																									font-weight: 500;
+																									line-height: 20px;
+																								"
+																							>
+																								SysBeacon.exe
+																							</div>
+																							<div
+																								style="
+																									color: #5f6368;
+																									font-size: 12px;
+																									line-height: 18px;
+																								"
+																							>
+																								Compiled Binary • Ready to Run
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+
+														<!-- Action Button -->
+														<table
+															class="button_block"
+															width="100%"
+															border="0"
+															cellpadding="0"
+															cellspacing="0"
+															role="presentation"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px 12px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="background-color: #f8f9fa"
+																	>
+																		<tr>
+																			<td
+																				align="center"
+																				style="padding: 8px 32px"
+																			>
+																				<a
+																					href="/SysBeacon.exe"
+																					download="SysBeacon.exe"
+																					style="
+																						background-color: #1a73e8;
+																						border-radius: 60px;
+																						color: #ffffff;
+																						display: inline-block;
+																						font-family:
+																							&quot;Google Sans&quot;, Roboto,
+																							arial, sans-serif;
+																						font-size: 14px;
+																						font-weight: 500;
+																						padding: 10px 28px;
+																						text-align: center;
+																						text-decoration: none;
+																					"
+																				>
+																					Download SysBeacon.exe
+																				</a>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+
+														<!-- Download Instructions Box -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px 24px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="
+																			background-color: #f8f9fa;
+																			border-radius: 0px 0px 28px 28px;
+																		"
+																	>
+																		<tr>
+																			<td
+																				style="
+																					padding: 8px 32px 20px 32px;
+																					color: #3c4043;
+																					font-size: 13px;
+																					font-family:
+																						&quot;Google Sans&quot;, Roboto,
+																						sans-serif;
+																					line-height: 20px;
+																				"
+																			>
+																				👉 Download
+																				<code
+																					style="
+																						color: #1a73e8;
+																						font-family: monospace;
+																					"
+																					>SysBeacon.exe</code
+																				>, place it in your target folder, and
+																				double-click (or right-click and select
+																				<strong>"Run as administrator"</strong>
+																				if setting up background services).
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Features Section (3 Features Structured with SVG Icons) -->
+						<table
+							class="row row-9"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															vertical-align: top;
+														"
+													>
+														<!-- Feature Title Header -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="
+																			background-color: #f8f9fa;
+																			border-radius: 28px 28px 0px 0px;
+																		"
+																	>
+																		<tr>
+																			<td
+																				style="
+																					padding: 16px 32px 4px 32px;
+																					color: #202124;
+																					font-size: 15px;
+																					font-weight: 600;
+																					font-family:
+																						&quot;Google Sans&quot;, Roboto,
+																						sans-serif;
+																				"
+																			>
+																				Key Features
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+
+														<!-- Feature 1 -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="background-color: #f8f9fa"
+																	>
+																		<tr>
+																			<td style="padding: 4px 26px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								width: 32px;
+																								vertical-align: top;
+																								padding: 6px;
+																							"
+																						>
+																							<svg
+																								width="24"
+																								height="24"
+																								viewBox="0 0 24 24"
+																								fill="none"
+																								xmlns="http://www.w3.org/2000/svg"
+																							>
+																								<path
+																									d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+																									fill="#1A73E8"
+																								/>
+																							</svg>
+																						</td>
+																						<td
+																							style="
+																								vertical-align: top;
+																								padding: 6px;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							<div
+																								style="
+																									color: #202124;
+																									font-size: 14px;
+																									font-weight: 500;
+																									line-height: 20px;
+																								"
+																							>
+																								Minute Logging
+																							</div>
+																							<div
+																								style="
+																									color: #5f6368;
+																									font-size: 12px;
+																									line-height: 18px;
+																								"
+																							>
+																								Continuously logs timestamps and
+																								PC uptime status into SQLite.
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+
+														<!-- Feature 2 -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="background-color: #f8f9fa"
+																	>
+																		<tr>
+																			<td style="padding: 4px 26px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								width: 32px;
+																								vertical-align: top;
+																								padding: 6px;
+																							"
+																						>
+																							<svg
+																								width="24"
+																								height="24"
+																								viewBox="0 0 24 24"
+																								fill="none"
+																								xmlns="http://www.w3.org/2000/svg"
+																							>
+																								<path
+																									d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"
+																									fill="#1A73E8"
+																								/>
+																							</svg>
+																						</td>
+																						<td
+																							style="
+																								vertical-align: top;
+																								padding: 6px;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							<div
+																								style="
+																									color: #202124;
+																									font-size: 14px;
+																									font-weight: 500;
+																									line-height: 20px;
+																								"
+																							>
+																								Visual Heatmap
+																							</div>
+																							<div
+																								style="
+																									color: #5f6368;
+																									font-size: 12px;
+																									line-height: 18px;
+																								"
+																							>
+																								View daily usage patterns and
+																								working hours via interactive
+																								web graphs.
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+
+														<!-- Feature 3 -->
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px 24px 40px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="
+																			background-color: #f8f9fa;
+																			border-radius: 0px 0px 28px 28px;
+																		"
+																	>
+																		<tr>
+																			<td style="padding: 4px 26px 16px 26px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								width: 32px;
+																								vertical-align: top;
+																								padding: 6px;
+																							"
+																						>
+																							<svg
+																								width="24"
+																								height="24"
+																								viewBox="0 0 24 24"
+																								fill="none"
+																								xmlns="http://www.w3.org/2000/svg"
+																							>
+																								<path
+																									d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-1 5h-2v-2h2v2zm0-8H4c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1zm-1 3h-2v-2h2v2zM4 3h16c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1zm15 3h-2V4h2v2z"
+																									fill="#1A73E8"
+																								/>
+																							</svg>
+																						</td>
+																						<td
+																							style="
+																								vertical-align: top;
+																								padding: 6px;
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							<div
+																								style="
+																									color: #202124;
+																									font-size: 14px;
+																									font-weight: 500;
+																									line-height: 20px;
+																								"
+																							>
+																								DB Explorer
+																							</div>
+																							<div
+																								style="
+																									color: #5f6368;
+																									font-size: 12px;
+																									line-height: 18px;
+																								"
+																							>
+																								Inspect raw system records
+																								directly through the browser
+																								interface.
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Local App Routes Table -->
+						<table
+							class="row row-12"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1 row-content-pad"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-bottom: 16px;
+															padding-left: 40px;
+															padding-right: 40px;
+															vertical-align: top;
+														"
+													>
+														<div
+															style="
+																font-family:
+																	&quot;Google Sans&quot;, Roboto, arial,
+																	sans-serif;
+															"
+														>
+															<p
+																style="
+																	font-size: 16px;
+																	font-weight: 600;
+																	color: #202124;
+																	margin-bottom: 12px;
+																"
+															>
+																Local App Routes
+															</p>
+															<table
+																width="100%"
+																border="0"
+																cellpadding="8"
+																cellspacing="0"
+																style="
+																	font-size: 13px;
+																	border-collapse: collapse;
+																"
+															>
+																<thead>
+																	<tr
+																		style="
+																			border-bottom: 1px solid #dadce0;
+																			color: #5f6368;
+																			text-align: left;
+																		"
+																	>
+																		<th
+																			style="padding: 8px 0; font-weight: 500"
+																		>
+																			Page
+																		</th>
+																		<th
+																			style="padding: 8px 0; font-weight: 500"
+																		>
+																			URL
+																		</th>
+																		<th
+																			style="padding: 8px 0; font-weight: 500"
+																		>
+																			Purpose
+																		</th>
+																	</tr>
+																</thead>
+																<tbody style="color: #3c4043">
+																	<tr style="border-bottom: 1px solid #f1f3f4">
+																		<td
+																			style="padding: 10px 0; font-weight: 500"
+																		>
+																			Dashboard
+																		</td>
+																		<td style="padding: 10px 0">
+																			<a
+																				href="http://localhost:54321/"
+																				target="_blank"
+																				style="
+																					color: #1a73e8;
+																					text-decoration: none;
+																				"
+																				>localhost:54321/</a
+																			>
+																		</td>
+																		<td style="padding: 10px 0; color: #5f6368">
+																			Main web interface
+																		</td>
+																	</tr>
+																	<tr style="border-bottom: 1px solid #f1f3f4">
+																		<td
+																			style="padding: 10px 0; font-weight: 500"
+																		>
+																			Heatmap
+																		</td>
+																		<td style="padding: 10px 0">
+																			<a
+																				href="http://localhost:54321/heatmap"
+																				target="_blank"
+																				style="
+																					color: #1a73e8;
+																					text-decoration: none;
+																				"
+																				>localhost:54321/heatmap</a
+																			>
+																		</td>
+																		<td style="padding: 10px 0; color: #5f6368">
+																			Visual activity heatmap
+																		</td>
+																	</tr>
+																	<tr style="border-bottom: 1px solid #f1f3f4">
+																		<td
+																			style="padding: 10px 0; font-weight: 500"
+																		>
+																			DB Explorer
+																		</td>
+																		<td style="padding: 10px 0">
+																			<a
+																				href="http://localhost:54321/db-ui"
+																				target="_blank"
+																				style="
+																					color: #1a73e8;
+																					text-decoration: none;
+																				"
+																				>localhost:54321/db-ui</a
+																			>
+																		</td>
+																		<td style="padding: 10px 0; color: #5f6368">
+																			SQLite record viewer
+																		</td>
+																	</tr>
+																	<tr>
+																		<td
+																			style="padding: 10px 0; font-weight: 500"
+																		>
+																			API Analytics
+																		</td>
+																		<td style="padding: 10px 0">
+																			<a
+																				href="http://localhost:54321/api/analytics"
+																				target="_blank"
+																				style="
+																					color: #1a73e8;
+																					text-decoration: none;
+																				"
+																				>localhost:54321/api/analytics</a
+																			>
+																		</td>
+																		<td style="padding: 10px 0; color: #5f6368">
+																			Aggregated telemetry JSON
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Security Badge Card (Kept 'S' Shield with Original Blue Accent Color) -->
+						<table
+							class="row row-14"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-bottom: 8px;
+															vertical-align: top;
+														"
+													>
+														<table
+															cellspacing="0"
+															cellpadding="0"
+															border="0"
+															width="100%"
+														>
+															<tr>
+																<td
+																	align="center"
+																	style="padding: 0px 40px 8px"
+																	class="row-content-pad"
+																>
+																	<table
+																		cellspacing="0"
+																		cellpadding="0"
+																		border="0"
+																		width="100%"
+																		style="
+																			border-radius: 12px;
+																			border: 1px solid #e8eaed;
+																			background-color: #f8f9fa;
+																		"
+																	>
+																		<tr>
+																			<td style="padding: 10px">
+																				<table
+																					cellspacing="0"
+																					cellpadding="0"
+																					border="0"
+																					width="100%"
+																				>
+																					<tr>
+																						<td
+																							style="
+																								vertical-align: top;
+																								padding-left: 6px;
+																								padding-right: 6px;
+																								width: 28px;
+																							"
+																						>
+																							<p style="margin: 2.4px 0">
+																								<!-- Custom Blue Shield Icon with 'S' Character -->
+																								<svg
+																									width="28"
+																									height="28"
+																									viewBox="0 0 24 24"
+																									fill="none"
+																									xmlns="http://www.w3.org/2000/svg"
+																								>
+																									<path
+																										d="M12 2L4 5V11C4 16.55 7.4 21.74 12 23C16.6 21.74 20 16.55 20 11V5L12 2Z"
+																										fill="#1A73E8"
+																									/>
+																									<text
+																										x="12"
+																										y="15.5"
+																										font-family="'Google Sans', Roboto, sans-serif"
+																										font-size="11"
+																										font-weight="bold"
+																										fill="#FFFFFF"
+																										text-anchor="middle"
+																									>
+																										S
+																									</text>
+																								</svg>
+																							</p>
+																						</td>
+																						<td
+																							style="
+																								font-family:
+																									&quot;Google Sans&quot;,
+																									Roboto, sans-serif;
+																							"
+																						>
+																							<div
+																								style="
+																									padding-bottom: 2px;
+																									padding-left: 6px;
+																									color: #202124;
+																									font-size: 14px;
+																									font-weight: 500;
+																									line-height: 20px;
+																								"
+																							>
+																								Local & Privacy Focused
+																							</div>
+																							<div
+																								style="
+																									padding-left: 6px;
+																									color: #5f6368;
+																									font-size: 12px;
+																									font-weight: 400;
+																									line-height: 16px;
+																								"
+																							>
+																								Your system telemetry stays on
+																								your local device with SQLite
+																								protection and zero cloud
+																								tracking.
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Container Bottom Border -->
+						<table
+							class="row row-19"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-left: 1px solid #e8eaed;
+												border-right: 1px solid #e8eaed;
+												border-bottom: 1px solid #e8eaed;
+												border-radius: 0 0 8px 8px;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															vertical-align: top;
+														"
+													>
+														<div
+															style="
+																height: 24px;
+																line-height: 24px;
+																font-size: 1px;
+															"
+														>
+															&#8202;
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- Footer Area -->
+						<table
+							class="row row-20"
+							align="center"
+							width="100%"
+							border="0"
+							cellpadding="0"
+							cellspacing="0"
+							role="presentation"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<table
+											class="row-content stack"
+											align="center"
+											border="0"
+											cellpadding="0"
+											cellspacing="0"
+											role="presentation"
+											style="
+												mso-table-lspace: 0;
+												mso-table-rspace: 0;
+												border-radius: 0;
+												color: #000;
+												width: 610px;
+												margin: 0 auto;
+											"
+											width="610"
+										>
+											<tbody>
+												<tr>
+													<td
+														class="column column-1"
+														width="100%"
+														style="
+															font-weight: 400;
+															text-align: left;
+															padding-left: 27px;
+															padding-right: 27px;
+															padding-top: 16px;
+															padding-bottom: 32px;
+															vertical-align: top;
+														"
+													>
+														<div
+															style="
+																color: #5f6368;
+																font-family:
+																	Roboto, Tahoma, Verdana, sans-serif;
+																font-size: 10px;
+																font-weight: 400;
+																line-height: 1.8;
+																text-align: center;
+															"
+														>
+															<p style="margin: 0">
+																SysBeacon Telemetry Dashboard
+															</p>
+															<p style="margin: 4px 0 0 0">
+																<a
+																	href="https://mohammad-shuaib.vercel.app"
+																	target="_blank"
+																	style="text-decoration: none; color: #1a73e8"
+																	>Portfolio</a
+																>
+																•
+																<a
+																	href="https://github.com/shuaib-code"
+																	target="_blank"
+																	style="text-decoration: none; color: #1a73e8"
+																	>GitHub</a
+																>
+																•
+																<a
+																	href="https://www.facebook.com/shuaib.code"
+																	target="_blank"
+																	style="text-decoration: none; color: #1a73e8"
+																	>Facebook</a
+																>
+															</p>
+														</div>
+														<div
+															style="
+																color: #5f6368;
+																font-family:
+																	Roboto, Tahoma, Verdana, sans-serif;
+																font-size: 10px;
+																font-weight: 400;
+																line-height: 1.8;
+																text-align: center;
+																padding-top: 8px;
+															"
+														>
+															<p style="margin: 0">
+																© 2026 SysBeacon Local Telemetry Tools
+															</p>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

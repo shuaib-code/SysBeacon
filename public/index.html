@@ -1,19 +1,16 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>SysBeacon — PC Activity Monitor</title>
 		<link
 			rel="icon"
 			type="image/svg+xml"
 			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
 		/>
-		<!-- Fonts: Outfit / Inter fallback to simulate Google Sans feel -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700%7CRoboto:400,500,600,700;display=swap"
 			rel="stylesheet"
 		/>
 		<script src="https://cdn.tailwindcss.com"></script>
@@ -22,366 +19,352 @@
 				theme: {
 					extend: {
 						fontFamily: {
-							sans: [
-								'"Product Sans"',
-								"Outfit",
-								"Inter",
-								"system-ui",
-								"sans-serif",
-							],
-							mono: ["SFMono-Regular", "Consolas", "monospace"],
-						},
-						colors: {
-							strava: {
-								DEFAULT: "#FC5200", // Brand Primary
-								hover: "#E04800",
-								dark: "#18181B",
-								container: "#FFF0EA",
-								onContainer: "#5C1D00",
-							},
-							md: {
-								bg: "#FAF8F5",
-								onSurface: "#19191C",
-								muted: "#66656E",
-								border: "#EDE9E3",
-							},
-						},
-						animation: {
-							"pulse-subtle":
-								"pulseSlow 3s infinite cubic-bezier(0.4, 0, 0.6, 1)",
-							"fade-in": "fadeIn 0.5s ease-out forwards",
-							float: "float 6s ease-in-out infinite",
-						},
-						keyframes: {
-							pulseSlow: {
-								"0%, 100%": { opacity: 0.15 },
-								"50%": { opacity: 0.35 },
-							},
-							fadeIn: {
-								"0%": { opacity: 0, transform: "translateY(12px)" },
-								"100%": { opacity: 1, transform: "translateY(0)" },
-							},
-							float: {
-								"0%, 100%": { transform: "translateY(0px)" },
-								"50%": { transform: "translateY(-8px)" },
-							},
+							sans: ['"Google Sans"', "Roboto", "sans-serif"],
 						},
 					},
 				},
 			};
 		</script>
 	</head>
-	<body
-		class="bg-md-bg min-h-screen flex flex-col text-md-onSurface font-sans antialiased selection:bg-strava selection:text-white relative pb-20 md:pb-0"
-	>
-		<!-- Ambient Glowing Orbs -->
-		<div
-			class="fixed -top-24 -left-24 w-80 h-80 md:w-96 md:h-96 bg-strava/10 rounded-full blur-3xl pointer-events-none animate-pulse-subtle -z-10"
-			aria-hidden="true"
-		></div>
-		<div
-			class="fixed top-1/2 -right-24 w-72 h-72 md:w-80 md:h-80 bg-strava/10 rounded-full blur-3xl pointer-events-none animate-pulse-subtle -z-10"
-			aria-hidden="true"
-		></div>
-
-		<!-- Navigation Header -->
-		<header
-			class="sticky top-0 z-40 bg-md-bg/90 backdrop-blur-md border-b border-md-border/80 transition-all duration-300"
+	<body class="bg-white font-sans text-[#202124] antialiased">
+		<!-- Main Card Container -->
+		<main
+			class="mx-auto max-w-[610px] px-4 sm:px-[40px] border border-[#e8eaed] rounded-lg my-4 pb-6"
 		>
-			<div
-				class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
-			>
-				<a
-					href="#"
-					class="flex items-center gap-2.5 active:scale-95 transition-transform duration-200 group"
+			<!-- Header Logo -->
+			<header class="pt-[28px] text-center">
+				<img
+					src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
+					class="h-[40px] mx-auto"
+					alt="SysBeacon Logo"
+				/>
+			</header>
+
+			<!-- Titles -->
+			<section class="text-center mt-[20px] mb-[3px]">
+				<h1 class="text-[22px] font-normal leading-[1.2]">
+					SysBeacon — PC Activity Monitor
+				</h1>
+				<span
+					class="inline-block mt-[8px] text-[14px] text-[#1a73e8] font-medium"
 				>
-					<img
-						src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
-						alt="SysBeacon Logo"
-						class="w-7 h-7 group-hover:rotate-12 transition-transform duration-300"
+					Local Telemetry Dashboard
+				</span>
+			</section>
+
+			<!-- Divider -->
+			<hr class="border-t border-[#dadce0] my-[20px]" />
+
+			<!-- Info Banner Callout -->
+			<section
+				class="bg-[#e8f0fe] border border-[#d2e3fc] rounded-[12px] p-4 flex gap-[12px] items-start mb-4"
+			>
+				<svg
+					class="w-6 h-6 flex-shrink-0"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+						fill="#1A73E8"
 					/>
-					<span class="text-lg font-bold tracking-tight">SysBeacon</span>
-				</a>
-				<div class="hidden sm:flex items-center gap-3">
-					<a
-						href="#install"
-						class="bg-strava text-white px-5 py-2 rounded-full font-medium text-xs transition-all duration-300 hover:bg-strava-hover shadow-sm hover:shadow-md active:scale-95"
+				</svg>
+				<div class="text-[14px] leading-[20px]">
+					<p class="font-bold text-[#1a73e8] mb-2">
+						Silent uptime tracking with visual activity heatmaps.
+					</p>
+					<p class="text-[#3c4043]">
+						SysBeacon records online pings every minute directly to a local
+						SQLite database, giving you visual analytics and raw record access
+						without external cloud services.
+					</p>
+				</div>
+			</section>
+
+			<!-- Download Executable Section Card -->
+			<section
+				id="install"
+				class="bg-[#f8f9fa] rounded-[28px] p-[20px] sm:p-[32px] mb-6"
+			>
+				<h2 class="text-[16px] font-semibold text-[#202124]">
+					Direct Executable (WINDOWS x64)
+				</h2>
+				<p class="text-[13px] text-[#5f6368] mt-1 mb-4">
+					Download the compiled application binary for Windows.
+				</p>
+
+				<!-- Download Action -->
+				<div class="flex items-start gap-[12px] mb-4">
+					<svg
+						class="w-6 h-6 flex-shrink-0"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
 					>
-						Download Executable
+						<path
+							d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z"
+							fill="#1A73E8"
+						/>
+					</svg>
+					<div>
+						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
+							SysBeacon.exe
+						</div>
+						<div class="text-[12px] text-[#5f6368] leading-[18px]">
+							Compiled Binary • Ready to Run
+						</div>
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="text-center my-4">
+					<a
+						href="/SysBeacon.exe"
+						download="SysBeacon.exe"
+						class="bg-[#1a73e8] text-white rounded-full text-[14px] font-medium px-[28px] py-[10px] inline-block hover:opacity-90 transition"
+					>
+						Download SysBeacon.exe
 					</a>
 				</div>
-			</div>
-		</header>
 
-		<main
-			class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-6 animate-fade-in"
-		>
-			<!-- Hero Card (Pure White) -->
-			<section
-				class="bg-white rounded-3xl p-6 sm:p-10 border border-md-border shadow-sm hover:shadow-md transition-shadow duration-300 space-y-4 relative overflow-hidden"
-			>
-				<div class="flex items-center gap-2">
-					<span
-						class="inline-flex items-center gap-1.5 bg-strava-container text-strava-onContainer px-3 py-1 rounded-full text-xs font-semibold"
-					>
-						<span class="w-2 h-2 rounded-full bg-strava animate-ping"></span>
-						Local Telemetry Dashboard
-					</span>
-				</div>
-				<h1
-					class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight text-md-onSurface"
-				>
-					Silent uptime tracking with visual activity heatmaps.
-				</h1>
-				<p class="text-xs sm:text-sm text-md-muted leading-relaxed max-w-xl">
-					SysBeacon records online pings every minute directly to a local SQLite
-					database, giving you visual analytics and raw record access without
-					external cloud services.
+				<!-- Instruction Text -->
+				<p class="text-[13px] text-[#3c4043] leading-[20px] mt-4">
+					👉 Download
+					<code class="text-[#1a73e8] font-mono">SysBeacon.exe</code>, place it
+					in your target folder, and double-click (or right-click and select
+					<strong>"Run as administrator"</strong> if setting up background
+					services).
 				</p>
 			</section>
 
-			<!-- Download & Install Box -->
+			<!-- Key Features -->
 			<section
-				id="install"
-				class="bg-white rounded-3xl p-5 sm:p-8 border border-md-border shadow-sm space-y-4"
+				class="bg-[#f8f9fa] rounded-[28px] p-[20px] sm:p-[32px] mb-6 space-y-4"
 			>
-				<div
-					class="flex items-center justify-between border-b border-md-border pb-3"
-				>
+				<h2 class="text-[15px] font-semibold text-[#202124]">Key Features</h2>
+
+				<!-- Feature 1 -->
+				<div class="flex items-start gap-[12px]">
+					<svg
+						class="w-6 h-6 flex-shrink-0"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+							fill="#1A73E8"
+						/>
+					</svg>
 					<div>
-						<h2 class="text-lg sm:text-xl font-bold">Direct Executable</h2>
-						<p class="text-xs text-md-muted">
-							Download the compiled application binary for Windows
-						</p>
-					</div>
-					<span
-						class="bg-strava-dark text-white px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide"
-					>
-						WINDOWS x64
-					</span>
-				</div>
-
-				<!-- Action Box -->
-				<div class="space-y-3">
-					<div
-						class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-md-bg rounded-2xl p-4 sm:p-5 border border-md-border"
-					>
-						<div class="flex items-center gap-3 w-full sm:w-auto">
-							<div
-								class="w-10 h-10 rounded-xl bg-strava/10 flex items-center justify-center text-strava shrink-0"
-							>
-								<svg
-									class="w-5 h-5"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-									></path>
-								</svg>
-							</div>
-							<div>
-								<h3 class="text-sm font-bold">SysBeacon.exe</h3>
-								<p class="text-xs text-md-muted">
-									Compiled Binary • Ready to Run
-								</p>
-							</div>
+						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
+							Minute Logging
 						</div>
-						<a
-							href="/SysBeacon.exe"
-							download="SysBeacon.exe"
-							class="w-full sm:w-auto text-center bg-strava text-white px-6 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 hover:bg-strava-hover active:scale-95 shadow-sm shrink-0"
-						>
-							Download SysBeacon.exe
-						</a>
+						<div class="text-[12px] text-[#5f6368] leading-[18px]">
+							Continuously logs timestamps and PC uptime status into SQLite.
+						</div>
 					</div>
-					<p class="text-[11px] text-md-muted pl-1">
-						👉 Download
-						<code class="text-strava font-mono">SysBeacon.exe</code>, place it
-						in your target folder, and double-click (or right-click and select
-						<strong>"Run as administrator"</strong> if setting up background
-						services).
-					</p>
+				</div>
+
+				<!-- Feature 2 -->
+				<div class="flex items-start gap-[12px]">
+					<svg
+						class="w-6 h-6 flex-shrink-0"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"
+							fill="#1A73E8"
+						/>
+					</svg>
+					<div>
+						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
+							Visual Heatmap
+						</div>
+						<div class="text-[12px] text-[#5f6368] leading-[18px]">
+							View daily usage patterns and working hours via interactive web
+							graphs.
+						</div>
+					</div>
+				</div>
+
+				<!-- Feature 3 -->
+				<div class="flex items-start gap-[12px]">
+					<svg
+						class="w-6 h-6 flex-shrink-0"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-1 5h-2v-2h2v2zm0-8H4c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1zm-1 3h-2v-2h2v2zM4 3h16c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1zm15 3h-2V4h2v2z"
+							fill="#1A73E8"
+						/>
+					</svg>
+					<div>
+						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
+							DB Explorer
+						</div>
+						<div class="text-[12px] text-[#5f6368] leading-[18px]">
+							Inspect raw system records directly through the browser interface.
+						</div>
+					</div>
 				</div>
 			</section>
 
-			<!-- Features (Responsive 3-Column Grid) -->
-			<section class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-				<div
-					class="bg-white rounded-2xl p-5 border border-md-border shadow-sm hover:-translate-y-0.5 transition-transform duration-200 space-y-1.5"
-				>
-					<div
-						class="w-7 h-7 rounded-full bg-strava-container text-strava flex items-center justify-center font-bold text-xs"
-					>
-						1
-					</div>
-					<h3 class="text-sm font-bold">Minute Logging</h3>
-					<p class="text-xs text-md-muted leading-relaxed">
-						Continuously logs timestamps and PC uptime status into SQLite.
-					</p>
-				</div>
-				<div
-					class="bg-white rounded-2xl p-5 border border-md-border shadow-sm hover:-translate-y-0.5 transition-transform duration-200 space-y-1.5"
-				>
-					<div
-						class="w-7 h-7 rounded-full bg-strava-container text-strava flex items-center justify-center font-bold text-xs"
-					>
-						2
-					</div>
-					<h3 class="text-sm font-bold">Visual Heatmap</h3>
-					<p class="text-xs text-md-muted leading-relaxed">
-						View daily usage patterns and working hours via interactive web
-						graphs.
-					</p>
-				</div>
-				<div
-					class="bg-white rounded-2xl p-5 border border-md-border shadow-sm hover:-translate-y-0.5 transition-transform duration-200 space-y-1.5"
-				>
-					<div
-						class="w-7 h-7 rounded-full bg-strava-container text-strava flex items-center justify-center font-bold text-xs"
-					>
-						3
-					</div>
-					<h3 class="text-sm font-bold">DB Explorer</h3>
-					<p class="text-xs text-md-muted leading-relaxed">
-						Inspect raw system records directly through the browser interface.
-					</p>
-				</div>
-			</section>
-
-			<!-- Local Endpoints Table (Pure White & Mobile Scrollable) -->
-			<section
-				class="bg-white rounded-3xl p-5 sm:p-8 border border-md-border shadow-sm space-y-3"
-			>
-				<h2 class="text-lg sm:text-xl font-bold">Local App Routes</h2>
+			<!-- Local App Routes Table -->
+			<section class="mb-6">
+				<h2 class="text-[16px] font-semibold text-[#202124] mb-[12px]">
+					Local App Routes
+				</h2>
 				<div class="overflow-x-auto">
-					<table class="w-full text-left text-xs">
+					<table class="w-full text-left text-[13px] border-collapse">
 						<thead>
-							<tr class="border-b border-md-border text-md-muted">
-								<th class="pb-2 font-medium">Page</th>
-								<th class="pb-2 font-medium">URL</th>
-								<th class="pb-2 font-medium">Purpose</th>
+							<tr class="border-b border-[#dadce0] text-[#5f6368] font-medium">
+								<th class="py-2">Page</th>
+								<th class="py-2">URL</th>
+								<th class="py-2">Purpose</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-md-border font-mono text-xs">
+						<tbody class="text-[#3c4043] divide-y divide-[#f1f3f4]">
 							<tr>
-								<td class="py-2.5 font-sans font-medium">Dashboard</td>
-								<td class="py-2.5 text-strava">
+								<td class="py-2.5 font-medium">Dashboard</td>
+								<td class="py-2.5">
 									<a
 										href="http://localhost:54321/"
 										target="_blank"
-										class="hover:underline"
+										class="text-[#1a73e8]"
 										>localhost:54321/</a
 									>
 								</td>
-								<td class="py-2.5 font-sans text-md-muted">
-									Main web interface
-								</td>
+								<td class="py-2.5 text-[#5f6368]">Main web interface</td>
 							</tr>
 							<tr>
-								<td class="py-2.5 font-sans font-medium">Heatmap</td>
-								<td class="py-2.5 text-strava">
+								<td class="py-2.5 font-medium">Heatmap</td>
+								<td class="py-2.5">
 									<a
 										href="http://localhost:54321/heatmap"
 										target="_blank"
-										class="hover:underline"
+										class="text-[#1a73e8]"
 										>localhost:54321/heatmap</a
 									>
 								</td>
-								<td class="py-2.5 font-sans text-md-muted">
-									Visual activity heatmap
-								</td>
+								<td class="py-2.5 text-[#5f6368]">Visual activity heatmap</td>
 							</tr>
 							<tr>
-								<td class="py-2.5 font-sans font-medium">DB Explorer</td>
-								<td class="py-2.5 text-strava">
+								<td class="py-2.5 font-medium">DB Explorer</td>
+								<td class="py-2.5">
 									<a
 										href="http://localhost:54321/db-ui"
 										target="_blank"
-										class="hover:underline"
+										class="text-[#1a73e8]"
 										>localhost:54321/db-ui</a
 									>
 								</td>
-								<td class="py-2.5 font-sans text-md-muted">
-									SQLite record viewer
-								</td>
+								<td class="py-2.5 text-[#5f6368]">SQLite record viewer</td>
 							</tr>
 							<tr>
-								<td class="py-2.5 font-sans font-medium">API Analytics</td>
-								<td class="py-2.5 text-strava">
+								<td class="py-2.5 font-medium">API Analytics</td>
+								<td class="py-2.5">
 									<a
 										href="http://localhost:54321/api/analytics"
 										target="_blank"
-										class="hover:underline"
+										class="text-[#1a73e8]"
 										>localhost:54321/api/analytics</a
 									>
 								</td>
-								<td class="py-2.5 font-sans text-md-muted">
-									Aggregated telemetry JSON
-								</td>
+								<td class="py-2.5 text-[#5f6368]">Aggregated telemetry JSON</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</section>
+
+			<!-- Security Badge Card -->
+			<section
+				class="border border-[#e8eaed] bg-[#f8f9fa] rounded-[12px] p-[10px] flex items-start gap-[12px]"
+			>
+				<div class="flex-shrink-0 pt-[2.4px]">
+					<svg
+						class="w-[28px] h-[28px]"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M12 2L4 5V11C4 16.55 7.4 21.74 12 23C16.6 21.74 20 16.55 20 11V5L12 2Z"
+							fill="#1A73E8"
+						/>
+						<text
+							x="12"
+							y="15.5"
+							font-family="'Google Sans', Roboto, sans-serif"
+							font-size="11"
+							font-weight="bold"
+							fill="#FFFFFF"
+							text-anchor="middle"
+						>
+							S
+						</text>
+					</svg>
+				</div>
+				<div>
+					<div
+						class="text-[14px] font-medium leading-[20px] text-[#202124] mb-[2px]"
+					>
+						Local & Privacy Focused
+					</div>
+					<div class="text-[12px] leading-[16px] text-[#5f6368]">
+						Your system telemetry stays on your local device with SQLite
+						protection and zero cloud tracking.
+					</div>
+				</div>
+			</section>
 		</main>
 
-		<!-- Fixed Mobile Bottom Floating CTA Bar -->
-		<div
-			class="fixed bottom-0 left-0 right-0 p-3 bg-white/90 backdrop-blur-lg border-t border-md-border sm:hidden z-50 flex items-center justify-between gap-3 shadow-lg"
-		>
-			<div class="flex items-center gap-2 pl-2">
-				<img
-					src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
-					class="w-5 h-5"
-					alt="Icon"
-				/>
-				<span class="text-xs font-bold">SysBeacon</span>
-			</div>
-			<a
-				href="/SysBeacon.exe"
-				download="SysBeacon.exe"
-				class="bg-strava text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm active:scale-95"
-			>
-				Download .exe
-			</a>
-		</div>
-
-		<!-- Footer -->
-		<footer class="border-t border-md-border bg-white py-6">
-			<div
-				class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-md-muted"
-			>
-				<div class="flex items-center gap-2">
-					<span>SysBeacon Telemetry Dashboard</span>
-				</div>
-				<div class="flex items-center gap-3">
-					<a
-						href="https://mohammad-shuaib.vercel.app"
-						target="_blank"
-						class="hover:text-strava transition-colors"
-						>Portfolio</a
-					>
-					<span>•</span>
-					<a
-						href="https://github.com/shuaib-code"
-						target="_blank"
-						class="hover:text-strava transition-colors"
-						>GitHub</a
-					>
-					<span>•</span>
-					<a
-						href="https://www.facebook.com/shuaib.code"
-						target="_blank"
-						class="hover:text-strava transition-colors"
-						>Facebook</a
-					>
-				</div>
-			</div>
+		<!-- Footer Area -->
+		<footer class="text-center text-[10px] text-[#5f6368] leading-[1.8] pb-8">
+			<p>SysBeacon Telemetry Dashboard</p>
+			<p class="mt-1">
+				<a
+					href="https://mohammad-shuaib.vercel.app"
+					target="_blank"
+					class="text-[#1a73e8]"
+					>Portfolio</a
+				>
+				•
+				<a
+					href="https://github.com/shuaib-code"
+					target="_blank"
+					class="text-[#1a73e8]"
+					>GitHub</a
+				>
+				•
+				<a
+					href="https://www.facebook.com/shuaib.code"
+					target="_blank"
+					class="text-[#1a73e8]"
+					>Facebook</a
+				>
+			</p>
+			<p class="mt-2">© 2026 SysBeacon Local Telemetry Tools</p>
 		</footer>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-B1V82FDWMJ"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-B1V82FDWMJ");
+		</script>
 	</body>
 </html>
