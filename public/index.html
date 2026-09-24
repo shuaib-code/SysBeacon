@@ -107,7 +107,7 @@
 						href="#install"
 						class="bg-strava text-white px-5 py-2 rounded-full font-medium text-xs transition-all duration-300 hover:bg-strava-hover shadow-sm hover:shadow-md active:scale-95"
 					>
-						Quick Setup
+						Download Installer
 					</a>
 				</div>
 			</div>
@@ -140,7 +140,7 @@
 				</p>
 			</section>
 
-			<!-- Quick Install Box (Mobile Optimized & Interactive) -->
+			<!-- Download & Install Box -->
 			<section
 				id="install"
 				class="bg-white rounded-3xl p-5 sm:p-8 border border-md-border shadow-sm space-y-4"
@@ -149,46 +149,60 @@
 					class="flex items-center justify-between border-b border-md-border pb-3"
 				>
 					<div>
-						<h2 class="text-lg sm:text-xl font-bold">Quick Setup</h2>
+						<h2 class="text-lg sm:text-xl font-bold">One-Click Setup</h2>
 						<p class="text-xs text-md-muted">
-							Run in Command Prompt (CMD) or PowerShell
+							Download the official installer for Windows
 						</p>
 					</div>
 					<span
 						class="bg-strava-dark text-white px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide"
 					>
-						ADV MODE
+						WINDOWS x64
 					</span>
 				</div>
 
-				<!-- Command Copy Box -->
-				<div class="space-y-2">
+				<!-- Action Box -->
+				<div class="space-y-3">
 					<div
-						class="relative flex items-center bg-md-bg rounded-2xl p-3 sm:p-4 border border-md-border font-mono text-xs text-strava-dark overflow-hidden group"
+						class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-md-bg rounded-2xl p-4 sm:p-5 border border-md-border"
 					>
-						<div class="overflow-x-auto w-full pr-24 scrollbar-none py-1">
-							<code id="installCommand" class="whitespace-nowrap select-all"
-								>powershell -NoProfile -ExecutionPolicy Bypass -Command
-								"Invoke-WebRequest -Uri
-								'https://sysbeacon.vercel.app/install.bat' -OutFile
-								'$env:TEMP\install.bat'; Start-Process cmd -ArgumentList '/c
-								$env:TEMP\install.bat' -Verb RunAs"</code
+						<div class="flex items-center gap-3 w-full sm:w-auto">
+							<div
+								class="w-10 h-10 rounded-xl bg-strava/10 flex items-center justify-center text-strava shrink-0"
 							>
+								<svg
+									class="w-5 h-5"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+									></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-sm font-bold">SysBeacon Installer</h3>
+								<p class="text-xs text-md-muted">
+									install.bat • Lightweight Setup Script
+								</p>
+							</div>
 						</div>
-						<button
-							onclick="copyCommand()"
-							class="absolute right-2 bg-strava text-white px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 hover:bg-strava-hover active:scale-95 shadow-sm flex items-center gap-1"
+						<a
+							href="/install.bat"
+							download="install.bat"
+							class="w-full sm:w-auto text-center bg-strava text-white px-6 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 hover:bg-strava-hover active:scale-95 shadow-sm shrink-0"
 						>
-							<span id="copyBtnText">Copy</span>
-						</button>
+							Download Installer
+						</a>
 					</div>
 					<p class="text-[11px] text-md-muted pl-1">
-						👉 Press
-						<kbd
-							class="bg-md-bg px-1.5 py-0.5 rounded border border-md-border font-mono text-[10px]"
-							>Win + R</kbd
-						>, type <code class="text-strava font-mono">cmd</code>, paste
-						command, press Enter.
+						👉 Download <code class="text-strava font-mono">install.bat</code>,
+						right-click the downloaded file, and select
+						<strong>"Run as administrator"</strong>.
 					</p>
 				</div>
 			</section>
@@ -326,12 +340,13 @@
 				/>
 				<span class="text-xs font-bold">SysBeacon</span>
 			</div>
-			<button
-				onclick="copyCommand()"
+			<a
+				href="/install.bat"
+				download="install.bat"
 				class="bg-strava text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm active:scale-95"
 			>
-				Copy Install Code
-			</button>
+				Download Installer
+			</a>
 		</div>
 
 		<!-- Footer -->
@@ -366,19 +381,5 @@
 				</div>
 			</div>
 		</footer>
-
-		<!-- Interactive Copy Logic -->
-		<script>
-			function copyCommand() {
-				const cmdText = document.getElementById("installCommand").innerText;
-				navigator.clipboard.writeText(cmdText).then(() => {
-					const btnText = document.getElementById("copyBtnText");
-					btnText.innerText = "Copied!";
-					setTimeout(() => {
-						btnText.innerText = "Copy";
-					}, 2000);
-				});
-			}
-		</script>
 	</body>
 </html>
