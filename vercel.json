@@ -1,0 +1,13 @@
+{
+	"headers": [
+		{
+			"source": "/SysBeacon.exe",
+			"headers": [
+				{
+					"key": "Content-Type",
+					"value": "application/octet-stream"
+				}
+			]
+		}
+	]
+}

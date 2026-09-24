@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SysBeacon — PC Activity Monitor</title>
+		<!-- Favicon -->
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://unpkg.com/lucide@latest"></script>
+		<style>
+			body {
+				font-family: "Outfit", sans-serif;
+				background-color: #f0f0f0;
+				color: #121212;
+			}
+		</style>
+	</head>
+	<body
+		class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-8"
+	>
+		<!-- Main Bauhaus Poster Card -->
+		<main
+			class="max-w-4xl w-full bg-white rounded-none border-4 border-black shadow-[8px_8px_0px_0px_black] overflow-hidden grid grid-cols-1 md:grid-cols-12 my-auto"
+		>
+			<!-- Left Column: Content Area -->
+			<div
+				class="md:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-8 bg-white border-b-4 md:border-b-0 md:border-r-4 border-black"
+			>
+				<!-- Header Section -->
+				<div class="space-y-4">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center space-x-2">
+							<div
+								class="w-4 h-4 bg-[#D02020] rounded-full border-2 border-black"
+							></div>
+							<div
+								class="w-4 h-4 bg-[#1040C0] rounded-none border-2 border-black"
+							></div>
+							<div
+								class="w-4 h-4 bg-[#F0C020] rounded-none rotate-45 border-2 border-black"
+							></div>
+						</div>
+						<span
+							class="px-3 py-1 rounded-none bg-[#F0C020] text-black font-black text-xs border-2 border-black shadow-[2px_2px_0px_0px_black]"
+							>v1.0.0</span
+						>
+					</div>
+
+					<h1
+						class="text-4xl sm:text-5xl font-black tracking-tighter uppercase leading-[0.9]"
+					>
+						SysBeacon
+					</h1>
+					<p class="text-xs font-bold uppercase tracking-widest text-[#D02020]">
+						Automated PC Telemetry Agent
+					</p>
+				</div>
+
+				<!-- Description Block -->
+				<div
+					class="space-y-4 text-sm font-medium text-gray-800 leading-relaxed border-t-4 border-black pt-4"
+				>
+					<p>
+						<strong class="font-black text-black">SysBeacon</strong> is a
+						lightweight background telemetry agent designed to track machine
+						activity, uptime, and daily usage patterns using an embedded SQLite
+						database and a local HTTP Web UI dashboard.
+					</p>
+					<ul
+						class="space-y-2 text-xs font-bold uppercase tracking-wider text-gray-700"
+					>
+						<li class="flex items-center space-x-2">
+							<span class="w-2 h-2 bg-[#1040C0] rounded-full"></span>
+							<span>Automatic Startup via Windows Task Scheduler</span>
+						</li>
+						<li class="flex items-center space-x-2">
+							<span class="w-2 h-2 bg-[#D02020] rounded-full"></span>
+							<span>User AppData persistence model</span>
+						</li>
+						<li class="flex items-center space-x-2">
+							<span class="w-2 h-2 bg-[#F0C020] rounded-full"></span>
+							<span>Built-in visual heatmap and database explorer</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Quick Install Box -->
+				<div class="space-y-2">
+					<label
+						class="text-xs font-black uppercase tracking-wider text-black block"
+						>Quick Installation (Run in CMD as Admin)</label
+					>
+					<div
+						class="bg-[#121212] text-[#F0C020] font-mono text-xs p-4 rounded-none border-2 border-black flex justify-between items-center overflow-x-auto shadow-[4px_4px_0px_0px_#1040C0]"
+					>
+						<code id="cmdCode" class="whitespace-nowrap"
+							>curl -sSL https://YOUR-PROJECT.vercel.app/install.bat -o
+							%TEMP%\install.bat && %TEMP%\install.bat</code
+						>
+						<button
+							onclick="copyCommand()"
+							class="ml-4 px-3 py-1.5 bg-[#F0C020] hover:bg-white text-black font-black rounded-none border-2 border-black transition text-xs uppercase cursor-pointer active:translate-x-[2px] active:translate-y-[2px]"
+						>
+							Copy
+						</button>
+					</div>
+				</div>
+
+				<!-- Creator Information & Links -->
+				<div
+					class="pt-4 border-t-4 border-black flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+				>
+					<div class="text-xs font-bold uppercase tracking-wider text-gray-600">
+						Created by
+						<span class="font-black text-black">Mohammad Shuaib</span>
+					</div>
+					<div class="flex items-center gap-3">
+						<a
+							href="https://github.com/shuaib-code"
+							target="_blank"
+							class="p-2 rounded-none bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_black] hover:bg-[#D02020] hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+							title="GitHub"
+						>
+							<i data-lucide="github" class="w-4 h-4"></i>
+						</a>
+						<a
+							href="https://www.facebook.com/shuaib.code"
+							target="_blank"
+							class="p-2 rounded-none bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_black] hover:bg-[#1040C0] hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+							title="Facebook"
+						>
+							<i data-lucide="facebook" class="w-4 h-4"></i>
+						</a>
+						<a
+							href="https://mohammad-shuaib.vercel.app"
+							target="_blank"
+							class="p-2 rounded-none bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_black] hover:bg-[#F0C020] hover:text-black transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+							title="Portfolio"
+						>
+							<i data-lucide="globe" class="w-4 h-4"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Right Column: Constructivist Bauhaus Color Block Panel -->
+			<div
+				class="md:col-span-5 bg-[#1040C0] p-8 flex flex-col justify-between items-center relative overflow-hidden"
+			>
+				<!-- Background Abstract Geometric Accents -->
+				<div
+					class="absolute -top-12 -right-12 w-48 h-48 bg-[#F0C020] rounded-full border-4 border-black opacity-90"
+				></div>
+				<div
+					class="absolute bottom-10 -left-10 w-36 h-36 bg-[#D02020] rotate-45 border-4 border-black"
+				></div>
+
+				<!-- Foreground Composition Elements -->
+				<div class="z-10 w-full text-white space-y-2">
+					<span
+						class="text-xs font-black uppercase tracking-widest bg-black text-[#F0C020] px-2 py-1 border-2 border-white inline-block"
+						>Telemetry Matrix</span
+					>
+					<div
+						class="text-3xl font-black uppercase tracking-tight leading-none mt-2"
+					>
+						Geometry of Uptime
+					</div>
+				</div>
+
+				<div
+					class="z-10 my-12 w-40 h-40 bg-white border-4 border-black shadow-[8px_8px_0px_0px_black] flex items-center justify-center relative rotate-12"
+				>
+					<div
+						class="absolute inset-2 border-2 border-dashed border-black"
+					></div>
+					<i data-lucide="activity" class="w-16 h-16 text-[#D02020]"></i>
+				</div>
+
+				<div
+					class="z-10 w-full bg-black text-white p-4 border-2 border-white text-center font-mono text-xs uppercase tracking-widest"
+				>
+					Status: Active Daemon
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer Notice -->
+		<footer
+			class="mt-8 text-xs font-bold uppercase tracking-widest text-gray-500"
+		>
+			Bauhaus Constructivist Edition &bull; 2026
+		</footer>
+
+		<script>
+			lucide.createIcons();
+			function copyCommand() {
+				const cmdText = document.getElementById("cmdCode").innerText;
+				navigator.clipboard.writeText(cmdText);
+				alert("Command copied to clipboard!");
+			}
+		</script>
+	</body>
+</html>
