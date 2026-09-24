@@ -10,7 +10,7 @@ if %errorLevel% neq 0 (
 )
 
 :: Set Configuration Variables
-set "VERCEL_DOMAIN=https://YOUR-PROJECT.vercel.app"
+set "VERCEL_DOMAIN=https://sysbeacon.vercel.app"
 set "APP_NAME=SysBeacon"
 set "EXE_NAME=SysBeacon.exe"
 set "TARGET_DIR=C:\Program Files\%APP_NAME%"
