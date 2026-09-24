@@ -1,212 +1,380 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>SysBeacon — PC Activity Monitor</title>
-		<!-- Favicon -->
 		<link
 			rel="icon"
 			type="image/svg+xml"
 			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
 		/>
-		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Fonts: Outfit / Inter fallback to simulate Google Sans feel -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<script src="https://unpkg.com/lucide@latest"></script>
-		<style>
-			body {
-				font-family: "Outfit", sans-serif;
-				background-color: #f0f0f0;
-				color: #121212;
-			}
-		</style>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: [
+								'"Product Sans"',
+								"Outfit",
+								"Inter",
+								"system-ui",
+								"sans-serif",
+							],
+							mono: ["SFMono-Regular", "Consolas", "monospace"],
+						},
+						colors: {
+							strava: {
+								DEFAULT: "#FC5200", // Brand Primary
+								hover: "#E04800",
+								dark: "#18181B",
+								container: "#FFF0EA",
+								onContainer: "#5C1D00",
+							},
+							md: {
+								bg: "#FAF8F5",
+								onSurface: "#19191C",
+								muted: "#66656E",
+								border: "#EDE9E3",
+							},
+						},
+						animation: {
+							"pulse-subtle":
+								"pulseSlow 3s infinite cubic-bezier(0.4, 0, 0.6, 1)",
+							"fade-in": "fadeIn 0.5s ease-out forwards",
+							float: "float 6s ease-in-out infinite",
+						},
+						keyframes: {
+							pulseSlow: {
+								"0%, 100%": { opacity: 0.15 },
+								"50%": { opacity: 0.35 },
+							},
+							fadeIn: {
+								"0%": { opacity: 0, transform: "translateY(12px)" },
+								"100%": { opacity: 1, transform: "translateY(0)" },
+							},
+							float: {
+								"0%, 100%": { transform: "translateY(0px)" },
+								"50%": { transform: "translateY(-8px)" },
+							},
+						},
+					},
+				},
+			};
+		</script>
 	</head>
 	<body
-		class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-8"
+		class="bg-md-bg min-h-screen flex flex-col text-md-onSurface font-sans antialiased selection:bg-strava selection:text-white relative pb-20 md:pb-0"
 	>
-		<!-- Main Bauhaus Poster Card -->
-		<main
-			class="max-w-4xl w-full bg-white rounded-none border-4 border-black shadow-[8px_8px_0px_0px_black] overflow-hidden grid grid-cols-1 md:grid-cols-12 my-auto"
+		<!-- Ambient Glowing Orbs -->
+		<div
+			class="fixed -top-24 -left-24 w-80 h-80 md:w-96 md:h-96 bg-strava/10 rounded-full blur-3xl pointer-events-none animate-pulse-subtle -z-10"
+			aria-hidden="true"
+		></div>
+		<div
+			class="fixed top-1/2 -right-24 w-72 h-72 md:w-80 md:h-80 bg-strava/10 rounded-full blur-3xl pointer-events-none animate-pulse-subtle -z-10"
+			aria-hidden="true"
+		></div>
+
+		<!-- Navigation Header -->
+		<header
+			class="sticky top-0 z-40 bg-md-bg/90 backdrop-blur-md border-b border-md-border/80 transition-all duration-300"
 		>
-			<!-- Left Column: Content Area -->
 			<div
-				class="md:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-8 bg-white border-b-4 md:border-b-0 md:border-r-4 border-black"
+				class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
 			>
-				<!-- Header Section -->
-				<div class="space-y-4">
-					<div class="flex items-center justify-between">
-						<div class="flex items-center space-x-2">
-							<div
-								class="w-4 h-4 bg-[#D02020] rounded-full border-2 border-black"
-							></div>
-							<div
-								class="w-4 h-4 bg-[#1040C0] rounded-none border-2 border-black"
-							></div>
-							<div
-								class="w-4 h-4 bg-[#F0C020] rounded-none rotate-45 border-2 border-black"
-							></div>
-						</div>
-						<span
-							class="px-3 py-1 rounded-none bg-[#F0C020] text-black font-black text-xs border-2 border-black shadow-[2px_2px_0px_0px_black]"
-							>v1.0.0</span
-						>
-					</div>
-
-					<h1
-						class="text-4xl sm:text-5xl font-black tracking-tighter uppercase leading-[0.9]"
-					>
-						SysBeacon
-					</h1>
-					<p class="text-xs font-bold uppercase tracking-widest text-[#D02020]">
-						Automated PC Telemetry Agent
-					</p>
-				</div>
-
-				<!-- Description Block -->
-				<div
-					class="space-y-4 text-sm font-medium text-gray-800 leading-relaxed border-t-4 border-black pt-4"
+				<a
+					href="#"
+					class="flex items-center gap-2.5 active:scale-95 transition-transform duration-200 group"
 				>
-					<p>
-						<strong class="font-black text-black">SysBeacon</strong> is a
-						lightweight background telemetry agent designed to track machine
-						activity, uptime, and daily usage patterns using an embedded SQLite
-						database and a local HTTP Web UI dashboard.
-					</p>
-					<ul
-						class="space-y-2 text-xs font-bold uppercase tracking-wider text-gray-700"
+					<img
+						src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
+						alt="SysBeacon Logo"
+						class="w-7 h-7 group-hover:rotate-12 transition-transform duration-300"
+					/>
+					<span class="text-lg font-bold tracking-tight">SysBeacon</span>
+				</a>
+				<div class="hidden sm:flex items-center gap-3">
+					<a
+						href="#install"
+						class="bg-strava text-white px-5 py-2 rounded-full font-medium text-xs transition-all duration-300 hover:bg-strava-hover shadow-sm hover:shadow-md active:scale-95"
 					>
-						<li class="flex items-center space-x-2">
-							<span class="w-2 h-2 bg-[#1040C0] rounded-full"></span>
-							<span>Automatic Startup via Windows Task Scheduler</span>
-						</li>
-						<li class="flex items-center space-x-2">
-							<span class="w-2 h-2 bg-[#D02020] rounded-full"></span>
-							<span>User AppData persistence model</span>
-						</li>
-						<li class="flex items-center space-x-2">
-							<span class="w-2 h-2 bg-[#F0C020] rounded-full"></span>
-							<span>Built-in visual heatmap and database explorer</span>
-						</li>
-					</ul>
+						Quick Setup
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<main
+			class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-6 animate-fade-in"
+		>
+			<!-- Hero Card (Pure White) -->
+			<section
+				class="bg-white rounded-3xl p-6 sm:p-10 border border-md-border shadow-sm hover:shadow-md transition-shadow duration-300 space-y-4 relative overflow-hidden"
+			>
+				<div class="flex items-center gap-2">
+					<span
+						class="inline-flex items-center gap-1.5 bg-strava-container text-strava-onContainer px-3 py-1 rounded-full text-xs font-semibold"
+					>
+						<span class="w-2 h-2 rounded-full bg-strava animate-ping"></span>
+						Local Telemetry Dashboard
+					</span>
+				</div>
+				<h1
+					class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight text-md-onSurface"
+				>
+					Silent uptime tracking with visual activity heatmaps.
+				</h1>
+				<p class="text-xs sm:text-sm text-md-muted leading-relaxed max-w-xl">
+					SysBeacon records online pings every minute directly to a local SQLite
+					database, giving you visual analytics and raw record access without
+					external cloud services.
+				</p>
+			</section>
+
+			<!-- Quick Install Box (Mobile Optimized & Interactive) -->
+			<section
+				id="install"
+				class="bg-white rounded-3xl p-5 sm:p-8 border border-md-border shadow-sm space-y-4"
+			>
+				<div
+					class="flex items-center justify-between border-b border-md-border pb-3"
+				>
+					<div>
+						<h2 class="text-lg sm:text-xl font-bold">Quick Setup</h2>
+						<p class="text-xs text-md-muted">
+							Run in Command Prompt (CMD) or PowerShell
+						</p>
+					</div>
+					<span
+						class="bg-strava-dark text-white px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide"
+					>
+						ADV MODE
+					</span>
 				</div>
 
-				<!-- Quick Install Box -->
+				<!-- Command Copy Box -->
 				<div class="space-y-2">
-					<label
-						class="text-xs font-black uppercase tracking-wider text-black block"
-						>Quick Installation (Run in CMD as Admin)</label
-					>
 					<div
-						class="bg-[#121212] text-[#F0C020] font-mono text-xs p-4 rounded-none border-2 border-black flex justify-between items-center overflow-x-auto shadow-[4px_4px_0px_0px_#1040C0]"
+						class="relative flex items-center bg-md-bg rounded-2xl p-3 sm:p-4 border border-md-border font-mono text-xs text-strava-dark overflow-hidden group"
 					>
-						<code id="cmdCode" class="whitespace-nowrap"
-							>curl -sSL https://YOUR-PROJECT.vercel.app/install.bat -o
-							%TEMP%\install.bat && %TEMP%\install.bat</code
-						>
+						<div class="overflow-x-auto w-full pr-24 scrollbar-none py-1">
+							<code id="installCommand" class="whitespace-nowrap select-all"
+								>curl -sSL https://YOUR-PROJECT.vercel.app/install.bat -o
+								%TEMP%\install.bat &amp;&amp; %TEMP%\install.bat</code
+							>
+						</div>
 						<button
 							onclick="copyCommand()"
-							class="ml-4 px-3 py-1.5 bg-[#F0C020] hover:bg-white text-black font-black rounded-none border-2 border-black transition text-xs uppercase cursor-pointer active:translate-x-[2px] active:translate-y-[2px]"
+							class="absolute right-2 bg-strava text-white px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 hover:bg-strava-hover active:scale-95 shadow-sm flex items-center gap-1"
 						>
-							Copy
+							<span id="copyBtnText">Copy</span>
 						</button>
 					</div>
+					<p class="text-[11px] text-md-muted pl-1">
+						👉 Press
+						<kbd
+							class="bg-md-bg px-1.5 py-0.5 rounded border border-md-border font-mono text-[10px]"
+							>Win + R</kbd
+						>, type <code class="text-strava font-mono">cmd</code>, paste
+						command, press Enter.
+					</p>
 				</div>
+			</section>
 
-				<!-- Creator Information & Links -->
+			<!-- Features (Responsive 3-Column Grid) -->
+			<section class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
 				<div
-					class="pt-4 border-t-4 border-black flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+					class="bg-white rounded-2xl p-5 border border-md-border shadow-sm hover:-translate-y-0.5 transition-transform duration-200 space-y-1.5"
 				>
-					<div class="text-xs font-bold uppercase tracking-wider text-gray-600">
-						Created by
-						<span class="font-black text-black">Mohammad Shuaib</span>
+					<div
+						class="w-7 h-7 rounded-full bg-strava-container text-strava flex items-center justify-center font-bold text-xs"
+					>
+						1
 					</div>
-					<div class="flex items-center gap-3">
-						<a
-							href="https://github.com/shuaib-code"
-							target="_blank"
-							class="p-2 rounded-none bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_black] hover:bg-[#D02020] hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-							title="GitHub"
-						>
-							<i data-lucide="github" class="w-4 h-4"></i>
-						</a>
-						<a
-							href="https://www.facebook.com/shuaib.code"
-							target="_blank"
-							class="p-2 rounded-none bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_black] hover:bg-[#1040C0] hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-							title="Facebook"
-						>
-							<i data-lucide="facebook" class="w-4 h-4"></i>
-						</a>
-						<a
-							href="https://mohammad-shuaib.vercel.app"
-							target="_blank"
-							class="p-2 rounded-none bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_black] hover:bg-[#F0C020] hover:text-black transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-							title="Portfolio"
-						>
-							<i data-lucide="globe" class="w-4 h-4"></i>
-						</a>
-					</div>
+					<h3 class="text-sm font-bold">Minute Logging</h3>
+					<p class="text-xs text-md-muted leading-relaxed">
+						Continuously logs timestamps and PC uptime status into SQLite.
+					</p>
 				</div>
-			</div>
+				<div
+					class="bg-white rounded-2xl p-5 border border-md-border shadow-sm hover:-translate-y-0.5 transition-transform duration-200 space-y-1.5"
+				>
+					<div
+						class="w-7 h-7 rounded-full bg-strava-container text-strava flex items-center justify-center font-bold text-xs"
+					>
+						2
+					</div>
+					<h3 class="text-sm font-bold">Visual Heatmap</h3>
+					<p class="text-xs text-md-muted leading-relaxed">
+						View daily usage patterns and working hours via interactive web
+						graphs.
+					</p>
+				</div>
+				<div
+					class="bg-white rounded-2xl p-5 border border-md-border shadow-sm hover:-translate-y-0.5 transition-transform duration-200 space-y-1.5"
+				>
+					<div
+						class="w-7 h-7 rounded-full bg-strava-container text-strava flex items-center justify-center font-bold text-xs"
+					>
+						3
+					</div>
+					<h3 class="text-sm font-bold">DB Explorer</h3>
+					<p class="text-xs text-md-muted leading-relaxed">
+						Inspect raw system records directly through the browser interface.
+					</p>
+				</div>
+			</section>
 
-			<!-- Right Column: Constructivist Bauhaus Color Block Panel -->
-			<div
-				class="md:col-span-5 bg-[#1040C0] p-8 flex flex-col justify-between items-center relative overflow-hidden"
+			<!-- Local Endpoints Table (Pure White & Mobile Scrollable) -->
+			<section
+				class="bg-white rounded-3xl p-5 sm:p-8 border border-md-border shadow-sm space-y-3"
 			>
-				<!-- Background Abstract Geometric Accents -->
-				<div
-					class="absolute -top-12 -right-12 w-48 h-48 bg-[#F0C020] rounded-full border-4 border-black opacity-90"
-				></div>
-				<div
-					class="absolute bottom-10 -left-10 w-36 h-36 bg-[#D02020] rotate-45 border-4 border-black"
-				></div>
-
-				<!-- Foreground Composition Elements -->
-				<div class="z-10 w-full text-white space-y-2">
-					<span
-						class="text-xs font-black uppercase tracking-widest bg-black text-[#F0C020] px-2 py-1 border-2 border-white inline-block"
-						>Telemetry Matrix</span
-					>
-					<div
-						class="text-3xl font-black uppercase tracking-tight leading-none mt-2"
-					>
-						Geometry of Uptime
-					</div>
+				<h2 class="text-lg sm:text-xl font-bold">Local App Routes</h2>
+				<div class="overflow-x-auto">
+					<table class="w-full text-left text-xs">
+						<thead>
+							<tr class="border-b border-md-border text-md-muted">
+								<th class="pb-2 font-medium">Page</th>
+								<th class="pb-2 font-medium">URL</th>
+								<th class="pb-2 font-medium">Purpose</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-md-border font-mono text-xs">
+							<tr>
+								<td class="py-2.5 font-sans font-medium">Dashboard</td>
+								<td class="py-2.5 text-strava">
+									<a
+										href="http://localhost:54321/"
+										target="_blank"
+										class="hover:underline"
+										>localhost:54321/</a
+									>
+								</td>
+								<td class="py-2.5 font-sans text-md-muted">
+									Main web interface
+								</td>
+							</tr>
+							<tr>
+								<td class="py-2.5 font-sans font-medium">Heatmap</td>
+								<td class="py-2.5 text-strava">
+									<a
+										href="http://localhost:54321/heatmap"
+										target="_blank"
+										class="hover:underline"
+										>localhost:54321/heatmap</a
+									>
+								</td>
+								<td class="py-2.5 font-sans text-md-muted">
+									Visual activity heatmap
+								</td>
+							</tr>
+							<tr>
+								<td class="py-2.5 font-sans font-medium">DB Explorer</td>
+								<td class="py-2.5 text-strava">
+									<a
+										href="http://localhost:54321/db-ui"
+										target="_blank"
+										class="hover:underline"
+										>localhost:54321/db-ui</a
+									>
+								</td>
+								<td class="py-2.5 font-sans text-md-muted">
+									SQLite record viewer
+								</td>
+							</tr>
+							<tr>
+								<td class="py-2.5 font-sans font-medium">API Analytics</td>
+								<td class="py-2.5 text-strava">
+									<a
+										href="http://localhost:54321/api/analytics"
+										target="_blank"
+										class="hover:underline"
+										>localhost:54321/api/analytics</a
+									>
+								</td>
+								<td class="py-2.5 font-sans text-md-muted">
+									Aggregated telemetry JSON
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div
-					class="z-10 my-12 w-40 h-40 bg-white border-4 border-black shadow-[8px_8px_0px_0px_black] flex items-center justify-center relative rotate-12"
-				>
-					<div
-						class="absolute inset-2 border-2 border-dashed border-black"
-					></div>
-					<i data-lucide="activity" class="w-16 h-16 text-[#D02020]"></i>
-				</div>
-
-				<div
-					class="z-10 w-full bg-black text-white p-4 border-2 border-white text-center font-mono text-xs uppercase tracking-widest"
-				>
-					Status: Active Daemon
-				</div>
-			</div>
+			</section>
 		</main>
 
-		<!-- Footer Notice -->
-		<footer
-			class="mt-8 text-xs font-bold uppercase tracking-widest text-gray-500"
+		<!-- Fixed Mobile Bottom Floating CTA Bar -->
+		<div
+			class="fixed bottom-0 left-0 right-0 p-3 bg-white/90 backdrop-blur-lg border-t border-md-border sm:hidden z-50 flex items-center justify-between gap-3 shadow-lg"
 		>
-			Bauhaus Constructivist Edition &bull; 2026
+			<div class="flex items-center gap-2 pl-2">
+				<img
+					src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
+					class="w-5 h-5"
+					alt="Icon"
+				/>
+				<span class="text-xs font-bold">SysBeacon</span>
+			</div>
+			<button
+				onclick="copyCommand()"
+				class="bg-strava text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm active:scale-95"
+			>
+				Copy Install Code
+			</button>
+		</div>
+
+		<!-- Footer -->
+		<footer class="border-t border-md-border bg-white py-6">
+			<div
+				class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-md-muted"
+			>
+				<div class="flex items-center gap-2">
+					<span>SysBeacon Telemetry Dashboard</span>
+				</div>
+				<div class="flex items-center gap-3">
+					<a
+						href="https://mohammad-shuaib.vercel.app"
+						target="_blank"
+						class="hover:text-strava transition-colors"
+						>Portfolio</a
+					>
+					<span>•</span>
+					<a
+						href="https://github.com/shuaib-code"
+						target="_blank"
+						class="hover:text-strava transition-colors"
+						>GitHub</a
+					>
+					<span>•</span>
+					<a
+						href="https://www.facebook.com/shuaib.code"
+						target="_blank"
+						class="hover:text-strava transition-colors"
+						>Facebook</a
+					>
+				</div>
+			</div>
 		</footer>
 
+		<!-- Interactive Copy Logic -->
 		<script>
-			lucide.createIcons();
 			function copyCommand() {
-				const cmdText = document.getElementById("cmdCode").innerText;
-				navigator.clipboard.writeText(cmdText);
-				alert("Command copied to clipboard!");
+				const cmdText = document.getElementById("installCommand").innerText;
+				navigator.clipboard.writeText(cmdText).then(() => {
+					const btnText = document.getElementById("copyBtnText");
+					btnText.innerText = "Copied!";
+					setTimeout(() => {
+						btnText.innerText = "Copy";
+					}, 2000);
+				});
 			}
 		</script>
 	</body>
