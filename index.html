@@ -168,8 +168,11 @@
 					>
 						<div class="overflow-x-auto w-full pr-24 scrollbar-none py-1">
 							<code id="installCommand" class="whitespace-nowrap select-all"
-								>curl -sSL https://sysbeacon.vercel.app/install.bat -o
-								%TEMP%\install.bat &amp;&amp; %TEMP%\install.bat</code
+								>powershell -NoProfile -ExecutionPolicy Bypass -Command
+								"Invoke-WebRequest -Uri
+								'https://sysbeacon.vercel.app/install.bat' -OutFile
+								'$env:TEMP\install.bat'; Start-Process cmd -ArgumentList '/c
+								$env:TEMP\install.bat' -Verb RunAs"</code
 							>
 						</div>
 						<button
