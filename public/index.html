@@ -3,17 +3,77 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>SysBeacon — PC Activity Monitor</title>
+
+		<!-- Primary Meta Tags -->
+		<title>SysBeacon — Local PC Activity Monitor & Uptime Tracker</title>
+		<meta
+			name="title"
+			content="SysBeacon — Local PC Activity Monitor & Uptime Tracker"
+		/>
+		<meta
+			name="description"
+			content="SysBeacon is a lightweight local Windows PC activity monitor and uptime tracker. Records background telemetry into SQLite and provides clean visual heatmaps with zero cloud tracking."
+		/>
+		<meta
+			name="keywords"
+			content="PC activity monitor, uptime tracker, local telemetry, Windows system monitor, SQLite logger, activity heatmap, open source system monitor"
+		/>
+		<meta name="author" content="Mohammad Shuaib" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:url"
+			content="https://github.com/shuaib-code/SysBeacon"
+		/>
+		<meta
+			property="og:title"
+			content="SysBeacon — Local PC Activity Monitor & Uptime Tracker"
+		/>
+		<meta
+			property="og:description"
+			content="Lightweight local Windows PC activity monitor and uptime tracker with visual heatmaps and zero cloud tracking."
+		/>
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:url"
+			content="https://github.com/shuaib-code/SysBeacon"
+		/>
+		<meta
+			property="twitter:title"
+			content="SysBeacon — Local PC Activity Monitor & Uptime Tracker"
+		/>
+		<meta
+			property="twitter:description"
+			content="Lightweight local Windows PC activity monitor and uptime tracker with visual heatmaps and zero cloud tracking."
+		/>
+
+		<!-- Favicon -->
 		<link
 			rel="icon"
 			type="image/svg+xml"
 			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' fill='%23FC5200'><path d='M490.504 181.52C496.689 203.282 500 226.254 500 250C500 388.071 388.071 500 250 500C198.457 500 150.558 484.4 110.764 457.666L183.19 431.833C187.98 430.124 191.964 426.696 194.368 422.214L239.05 338.91L239.054 338.902L239.059 338.894L272.866 269.774C274.792 265.837 277.989 262.663 281.94 260.765L378.223 214.519C379.185 214.056 380.184 213.674 381.209 213.375L490.504 181.52ZM250 0C332.531 0 405.723 39.9918 451.251 101.654C449.964 101.832 448.694 102.132 447.46 102.551L200.859 186.302C194.033 188.62 188.926 194.354 187.41 201.401L148.148 383.896C146.603 391.078 141.152 396.782 134.047 398.651L64.0264 417.077C24.2207 372.799 0 314.228 0 250C0 111.929 111.929 0 250 0Z'/></svg>"
 		/>
+
+		<!-- Fonts & Tailwind CSS -->
 		<link
 			href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700%7CRoboto:400,500,600,700;display=swap"
 			rel="stylesheet"
 		/>
 		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Open Graph / Social Image -->
+		<meta
+			property="og:image"
+			content="https://sysbeacon.vercel.app/images/sysbeacon-og-image.webp"
+		/>
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta
+			property="twitter:image"
+			content="https://sysbeacon.vercel.app/images/sysbeacon-og-image.webp"
+		/>
 		<script>
 			tailwind.config = {
 				theme: {
@@ -24,6 +84,28 @@
 					},
 				},
 			};
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "SoftwareApplication",
+				"name": "SysBeacon",
+				"operatingSystem": "Windows x64",
+				"applicationCategory": "UtilitiesApplication",
+				"description": "Lightweight local Windows PC activity monitor and uptime tracker. Records background telemetry into SQLite and provides clean visual heatmaps with zero cloud tracking.",
+				"url": "https://github.com/shuaib-code/SysBeacon",
+				"image": "https://sysbeacon.vercel.app/images/sysbeacon-og-image.webp",
+				"author": {
+					"@type": "Person",
+					"name": "Mohammad Shuaib",
+					"url": "https://mohammad-shuaib.vercel.app"
+				},
+				"offers": {
+					"@type": "Offer",
+					"price": "0.00",
+					"priceCurrency": "USD"
+				}
+			}
 		</script>
 	</head>
 	<body class="bg-white font-sans text-[#202124] antialiased">
@@ -42,13 +124,18 @@
 
 			<!-- Titles -->
 			<section class="text-center mt-[20px] mb-[3px]">
+				<img
+					src="https://sysbeacon.vercel.app/images/sysbeacon-og-image.webp"
+					alt="SysBeacon Local PC Activity Monitor Dashboard Preview"
+					class="hidden"
+				/>
 				<h1 class="text-[22px] font-normal leading-[1.2]">
 					SysBeacon — PC Activity Monitor
 				</h1>
 				<span
 					class="inline-block mt-[8px] text-[14px] text-[#1a73e8] font-medium"
 				>
-					Local Telemetry Dashboard
+					Local PC Wake Time Tracker
 				</span>
 			</section>
 
@@ -71,13 +158,11 @@
 					/>
 				</svg>
 				<div class="text-[14px] leading-[20px]">
-					<p class="font-bold text-[#1a73e8] mb-2">
-						Silent uptime tracking with visual activity heatmaps.
-					</p>
+					<p class="font-bold text-[#1a73e8] mb-2">What SysBeacon Does:</p>
 					<p class="text-[#3c4043]">
-						SysBeacon records online pings every minute directly to a local
-						SQLite database, giving you visual analytics and raw record access
-						without external cloud services.
+						It quietly tracks your PC usage in the background, recording uptime
+						statistics every minute into a local database to show you clean
+						visual activity heatmaps.
 					</p>
 				</div>
 			</section>
@@ -88,10 +173,10 @@
 				class="bg-[#f8f9fa] rounded-[28px] p-[20px] sm:p-[32px] mb-6"
 			>
 				<h2 class="text-[16px] font-semibold text-[#202124]">
-					Setup Archive (WINDOWS x64)
+					Setup & Installation (WINDOWS x64)
 				</h2>
 				<p class="text-[13px] text-[#5f6368] mt-1 mb-4">
-					Download the application package for Windows.
+					Download and set up automatic startup via Windows Task Scheduler.
 				</p>
 
 				<!-- Download Action -->
@@ -112,7 +197,7 @@
 							SysBeacon.zip
 						</div>
 						<div class="text-[12px] text-[#5f6368] leading-[18px]">
-							ZIP Archive • Includes Installer & Binary
+							ZIP Archive • Includes Binary & Setup Guide
 						</div>
 					</div>
 				</div>
@@ -130,158 +215,46 @@
 
 				<!-- Instruction Text -->
 				<p class="text-[13px] text-[#3c4043] leading-[20px] mt-4">
-					👉 Download
-					<code class="text-[#1a73e8] font-mono">SysBeacon.zip</code>, extract
-					the archive, and double-click (or right-click and select
-					<strong>"Run as administrator"</strong>)
-					<code class="text-[#1a73e8] font-mono">install.bat</code>. Ensure
-					<code class="text-[#1a73e8] font-mono">SysBeacon.exe</code> is kept in
-					the same path for correct setup.
+					👉 Extract
+					<code class="text-[#1a73e8] font-mono">SysBeacon.zip</code>. To run
+					automatically on login without commands, press
+					<code class="text-[#1a73e8] font-mono">Win + R</code>, type
+					<code class="text-[#1a73e8] font-mono">taskschd.msc</code>, and hit
+					Enter. Click <strong>Create Basic Task</strong>, name it
+					<code class="text-[#1a73e8] font-mono">SysBeacon</code>, choose
+					<strong>When I log on</strong> &rarr;
+					<strong>Start a program</strong>, and select
+					<code class="text-[#1a73e8] font-mono">SysBeacon.exe</code>. Click
+					Finish, right-click the task in the library, and click
+					<strong>Run</strong> to test.
 				</p>
 			</section>
 
-			<!-- Key Features -->
-			<section
-				class="bg-[#f8f9fa] rounded-[28px] p-[20px] sm:p-[32px] mb-6 space-y-4"
-			>
-				<h2 class="text-[15px] font-semibold text-[#202124]">Key Features</h2>
-
-				<!-- Feature 1 -->
-				<div class="flex items-start gap-[12px]">
-					<svg
-						class="w-6 h-6 flex-shrink-0"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-							fill="#1A73E8"
-						/>
-					</svg>
-					<div>
-						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
-							Minute Logging
-						</div>
-						<div class="text-[12px] text-[#5f6368] leading-[18px]">
-							Continuously logs timestamps and PC uptime status into SQLite.
-						</div>
-					</div>
-				</div>
-
-				<!-- Feature 2 -->
-				<div class="flex items-start gap-[12px]">
-					<svg
-						class="w-6 h-6 flex-shrink-0"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"
-							fill="#1A73E8"
-						/>
-					</svg>
-					<div>
-						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
-							Visual Heatmap
-						</div>
-						<div class="text-[12px] text-[#5f6368] leading-[18px]">
-							View daily usage patterns and working hours via interactive web
-							graphs.
-						</div>
-					</div>
-				</div>
-
-				<!-- Feature 3 -->
-				<div class="flex items-start gap-[12px]">
-					<svg
-						class="w-6 h-6 flex-shrink-0"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-1 5h-2v-2h2v2zm0-8H4c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1zm-1 3h-2v-2h2v2zM4 3h16c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1zm15 3h-2V4h2v2z"
-							fill="#1A73E8"
-						/>
-					</svg>
-					<div>
-						<div class="text-[14px] font-medium leading-[20px] text-[#202124]">
-							DB Explorer
-						</div>
-						<div class="text-[12px] text-[#5f6368] leading-[18px]">
-							Inspect raw system records directly through the browser interface.
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Local App Routes Table -->
-			<section class="mb-6">
-				<h2 class="text-[16px] font-semibold text-[#202124] mb-[12px]">
-					Local App Routes
+			<!-- Access Guide / Routes -->
+			<section class="mb-6 bg-[#f8f9fa] rounded-[28px] p-[20px] sm:p-[32px]">
+				<h2 class="text-[16px] font-semibold text-[#202124] mb-[8px]">
+					How to Access Dashboard
 				</h2>
-				<div class="overflow-x-auto">
-					<table class="w-full text-left text-[13px] border-collapse">
-						<thead>
-							<tr class="border-b border-[#dadce0] text-[#5f6368] font-medium">
-								<th class="py-2">Page</th>
-								<th class="py-2">URL</th>
-								<th class="py-2">Purpose</th>
-							</tr>
-						</thead>
-						<tbody class="text-[#3c4043] divide-y divide-[#f1f3f4]">
-							<tr>
-								<td class="py-2.5 font-medium">Dashboard</td>
-								<td class="py-2.5">
-									<a
-										href="http://localhost:54321/"
-										target="_blank"
-										class="text-[#1a73e8]"
-										>localhost:54321/</a
-									>
-								</td>
-								<td class="py-2.5 text-[#5f6368]">Main web interface</td>
-							</tr>
-							<tr>
-								<td class="py-2.5 font-medium">Heatmap</td>
-								<td class="py-2.5">
-									<a
-										href="http://localhost:54321/heatmap"
-										target="_blank"
-										class="text-[#1a73e8]"
-										>localhost:54321/heatmap</a
-									>
-								</td>
-								<td class="py-2.5 text-[#5f6368]">Visual activity heatmap</td>
-							</tr>
-							<tr>
-								<td class="py-2.5 font-medium">DB Explorer</td>
-								<td class="py-2.5">
-									<a
-										href="http://localhost:54321/db-ui"
-										target="_blank"
-										class="text-[#1a73e8]"
-										>localhost:54321/db-ui</a
-									>
-								</td>
-								<td class="py-2.5 text-[#5f6368]">SQLite record viewer</td>
-							</tr>
-							<tr>
-								<td class="py-2.5 font-medium">API Analytics</td>
-								<td class="py-2.5">
-									<a
-										href="http://localhost:54321/api/analytics"
-										target="_blank"
-										class="text-[#1a73e8]"
-										>localhost:54321/api/analytics</a
-									>
-								</td>
-								<td class="py-2.5 text-[#5f6368]">Aggregated telemetry JSON</td>
-							</tr>
-						</tbody>
-					</table>
+				<p class="text-[13px] text-[#5f6368] mb-3">
+					Open your browser or use the system tray menu:
+				</p>
+				<div class="space-y-2 text-[13px] text-[#3c4043]">
+					<div class="flex items-center gap-2">
+						<span class="font-medium text-[#1a73e8]">URL:</span>
+						<a
+							href="http://localhost:321/"
+							target="_blank"
+							class="text-[#1a73e8] underline"
+							>localhost:321</a
+						>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="font-medium text-[#1a73e8]">Tray Option:</span>
+						<span
+							>Right-click the SysBeacon icon in the bottom Windows taskbar
+							right side and click <strong>Dashboard</strong>.</span
+						>
+					</div>
 				</div>
 			</section>
 
@@ -320,8 +293,8 @@
 						Local & Privacy Focused
 					</div>
 					<div class="text-[12px] leading-[16px] text-[#5f6368]">
-						Your system telemetry stays on your local device with SQLite
-						protection and zero cloud tracking.
+						Your system telemetry stays entirely on your device with local
+						SQLite storage and zero cloud tracking.
 					</div>
 				</div>
 			</section>
